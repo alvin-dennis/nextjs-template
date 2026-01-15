@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged for staged files
+bunx lint-staged
+
+# If lint-staged fails, abort commit
+if [ $? -ne 0 ]; then
+  echo "❌ Lint-staged failed. Please fix the errors above."
+  exit 1
+fi
+
+echo "✅ Pre-commit checks passed!"
